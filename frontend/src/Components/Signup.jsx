@@ -45,9 +45,6 @@ function SignUp() {
 
   return (
     <>
-    <div className='title'>
-    <h1>BeautiMap</h1>
-    </div>
     <div className='SignUpform'>
       <form onSubmit={handleSubmit}>
         <fieldset>

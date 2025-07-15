@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/',async(req,res)=>{
+    res.send('This is the homepage')
     
 })
 app.get('/signup',async(req,res)=>{
