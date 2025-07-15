@@ -12,6 +12,9 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
+app.get('/',async(req,res)=>{
+    
+})
 app.get('/signup',async(req,res)=>{
     try{
         const users = await Users.find({})
