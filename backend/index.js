@@ -12,6 +12,14 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
+app.get('/planner',async(req,res)=>{
+    res.send('This is the planner page')
+})
+
+app.get('/about',async(req,res)=>{
+    res.send('This is the about page')
+})
+
 app.get('/',async(req,res)=>{
     res.send('This is the homepage')
     
