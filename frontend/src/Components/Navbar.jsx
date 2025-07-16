@@ -3,13 +3,9 @@ import { Link } from "react-router-dom"
 
 function NavBar(){
     return(
-        <div>
-            <ul className="nav navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                    </div>
-                    <ul className="nav navbar-nav">
-                        <li className="active">
+           <div className="navBar">
+                    <ul>
+                        <li>
                             <Link to ="/">Home</Link>
                             <Link to ="/about">About</Link>
                             <Link to ="/planner">Planner</Link>
@@ -17,12 +13,7 @@ function NavBar(){
                         </li>
                         
                     </ul>
-                </div>
-                <li>
-                </li>
-                
-            </ul>
-        </div>
+            </div>
     )
 }
 

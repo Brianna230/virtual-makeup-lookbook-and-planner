@@ -1,0 +1,99 @@
+body{
+    background:linear-gradient( to left , #DCC6E0, #F7E7CE);
+    font-family: 'Poppins',sans-serif;
+}
+.title{
+    text-align: center;
+    color: #4a2e39;
+    padding: 30px;
+}
+
+.one-liner{
+    text-align: center;
+    color:#4A2E39;
+    font-size: 20px;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    background: #E8Dff5;
+}
+
+li{
+    /* display: inline; */
+    float: left;
+}
+
+li a{
+    padding: 8px;
+    color:#4A2E39;
+    text-align:center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active){
+    background-color: #B76E79;
+}
+
+.active{
+    background-color: #e5bccc;
+}
+
+.SignUpform{
+    width: 500px;
+    margin: 30px auto;
+    background-color: #d0b3b7;
+    color:#4a2e39;
+    box-shadow: 0 4px 8px rgb(65,61,61);
+    padding: 30px;
+    border-radius:3px;
+}
+
+input[type=text],[type=email],[type=password]{
+    width: 90%;
+    border: 1px purple solid;
+    border-radius: 5px;
+    padding:12px 20px;
+    resize:vertical;
+    cursor: pointer;
+    background-color: #f0f0f5;
+}
+
+.button-container{
+    display: flex;
+    text-align: center;
+    margin-left: 140px;
+    padding: 10px;
+}
+
+button{
+    padding: 12px 20px;
+    background-color: #cca3b3;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.Makeupphoto{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+
+}
+
+.features{
+    padding: 2%;
+    text-align: center;
+}
+
+.cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
