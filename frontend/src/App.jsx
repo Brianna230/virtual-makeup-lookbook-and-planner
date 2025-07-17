@@ -7,7 +7,8 @@ import Homepage from './Components/Homepage'
 import{Route,Routes} from 'react-router-dom'
 import Title from './Components/Title'
 import NavBar from './Components/Navbar'
-
+import About from './Components/About'
+import Planner from './Components/Planner'
 
 function App() {
  
@@ -18,6 +19,8 @@ function App() {
    <Routes>
     <Route path="/" element ={<Homepage />}/>
     <Route path="/signup" element={<SignUp />}/>
+    <Route path="/about" element={<About />} />
+    <Route path="/planner" element={<Planner />}/>
    </Routes>
 
     </>
