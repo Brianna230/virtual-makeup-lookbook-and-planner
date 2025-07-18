@@ -101,3 +101,16 @@ button{
 .signupnavBar{
   margin-left: 1090px;
 }
+
+#PlannerInput{
+    margin-top: 4%;
+    padding: 20px;
+    height: 20px;
+    margin-left: 20px;
+}
+
+/* .button-container2{
+    display: flex;
+    text-align: right;
+} */
+
