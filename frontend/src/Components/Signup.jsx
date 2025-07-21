@@ -1,4 +1,5 @@
 import { useState,useEffect,useRef } from 'react'
+import { useNavigate,Link } from 'react-router-dom';
 
 
 function SignUp() {
@@ -11,9 +12,9 @@ function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault()
     const user ={
-      username,
-      email,
-      password,
+      username:username.trim(),
+      email:email.trim(),
+      password:password.trim(),
     };                 // add try/catch
     const response = await fetch('http://localhost:8080/signup',{ 
       method:'POST',

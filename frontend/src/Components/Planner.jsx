@@ -1,7 +1,7 @@
 
 import React,{useState,useEffect,useRef} from "react"
 import PlannerSubmit from "../../../backend/models/Planner"
-import { get } from "mongoose"
+import { useLocation } from "react-router-dom"
 
 function Planner(){
     // const[data, setData] = useState([])
@@ -21,14 +21,16 @@ function Planner(){
     //     };
     //     fetchData()
     // },[])
+    const location = useLocation()
     const[plannersubmits, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
     const[plannerData, setPlannerData] = useState([])
+    console.log('location', location)
 
     async function handleplannerSubmit(e) {
         e.preventDefault()
         const submit ={
-            plannerSubmit:plannersubmits
+            plannerSubmit:{...plannersubmits,userId:location.state.userId}
         }
         const response = await fetch('http://localhost:8080/planner',{
             method:'POST',

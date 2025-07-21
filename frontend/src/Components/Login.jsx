@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 function Login(){
-     const[userId, setUserId]=useState('');
     const [username, setUsername] = useState('')
     const [password,setPassword] = useState('')
+    const navigate = useNavigate()
     
     async function handleSubmit(e) {
     e.preventDefault()
     const user ={
-      username,
-      password,
+      username:username.trim(),
+      password:password.trim(),
     };                 // add try/catch
     const response = await fetch('http://localhost:8080/login',{ 
       method:'POST',
@@ -21,11 +22,9 @@ function Login(){
     })
     const data = await response.json()
     console.log(data)
-    setUserId(data.id)
-    setUsername('')
-    setPassword('')
+    navigate('/planner', {state:data.id})
   }
-  console.log('userid:', userId)
+
     
 
     return(
