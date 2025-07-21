@@ -1,6 +1,7 @@
 
 import React,{useState,useEffect,useRef} from "react"
 import PlannerSubmit from "../../../backend/models/Planner"
+import { get } from "mongoose"
 
 function Planner(){
     // const[data, setData] = useState([])
@@ -22,6 +23,7 @@ function Planner(){
     // },[])
     const[plannersubmits, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
+    const[plannerData, setPlannerData] = useState([])
 
     async function handleplannerSubmit(e) {
         e.preventDefault()
@@ -37,19 +39,25 @@ function Planner(){
         })
         const newSubmits = await response.json()
         console.log(newSubmits)
-
-        setPlannersubmit([...plannersubmits, newSubmits])
+        setPlannerData((prev =>[... prev, {plannersubmits}]))
+        // setPlannersubmit([...plannersubmits, newSubmits])
         setPlannersubmit('')
     }
+
+  
 
     return(
         <div>
           <form onSubmit={handleplannerSubmit}>
             <div className="container text-center">
                 <div className="row">
-                    <div className="col" style={{border:"1px solid black",padding:"10%", marginRight:"5%",marginTop:"50px",paddingBottom:"20%", backgroundColor:"white"}}/>
-
+                    <div className="col" style={{border:"1px solid black",padding:"10%", marginRight:"5%",marginTop:"50px",paddingBottom:"20%", backgroundColor:"white"}}
+                     >
+                   {plannerData.map((item, index)=>(
+                    <p key={index}>{item.plannersubmits}</p>
+                   ))}
                 </div>
+            </div>
             </div>
             <input type="text" name="plannerInput" id="PlannerInput" required value={plannersubmits} onChange={(e)=>setPlannersubmit(e.target.value)}placeholder="Plan your makeup look"/>
             <div className="button-container2">

@@ -33,6 +33,18 @@ app.post('/planner', async(req,res)=>{
     }
 })
 
+app.delete('/planners/:id', async(req,res)=>{
+    try{
+         const response = await PlannerSubmit.findbyId(req.params.id)
+         console.log(response)
+         res.status(200).json(response)
+    }catch(e){
+        console.log(e)
+        res.status(400).json(e)
+
+    }
+})
+
 
 app.get('/about',async(req,res)=>{
     res.send('This is the about page')
@@ -68,6 +80,17 @@ app.get("/login",async(req,res)=>{
 
 })
 
+app.post("/login",async(req,res)=>{
+    try{
+        const {username,password} = req.body
+        const user = await Users.findOne({username})
+        if(!user){
+            return res.status(400).json({message:'Invalid username or password'})
+        }
+    }catch{
+
+    }
+})
 
 app.listen(port, ()=> console.log('Listening on port:' + port))
 
