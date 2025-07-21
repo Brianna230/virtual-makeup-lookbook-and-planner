@@ -75,19 +75,20 @@ app.post('/signup', async(req,res)=>{
    
 })
 
-app.get("/login",async(req,res)=>{
-    res.send("This is a login")
 
-})
 
 app.post("/login",async(req,res)=>{
     try{
+        console.log(req.body)
         const {username,password} = req.body
         const user = await Users.findOne({username})
         if(!user){
-            return res.status(400).json({message:'Invalid username or password'})
+            return res.status(401).json({message:'Invalid username or password'})
         }
-    }catch{
+        res.status(200).json({id:user._id})
+    }catch(e){
+        console.log(e)
+        res.status(500).json(e)
 
     }
 })

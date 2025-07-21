@@ -6,20 +6,7 @@ function SignUp() {
    const[username,setUsername]=useState('');
    const[email, setEmail]=useState('')
    const[password,setPassword]=useState('')
-  async function getData() {
-    try{
-      const response = await fetch('http://localhost:8080/signup')
-      const data = await response.json()
-      console.log(data);
-      setUsers(data);
-    }catch(e){
-      console.log(e);
-
-    }
-  }
-  useEffect(()=>{
-    getData()
-  },[])
+  
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -27,8 +14,8 @@ function SignUp() {
       username,
       email,
       password,
-    };
-    const response = await fetch('http://localhost:8080/signup',{
+    };                 // add try/catch
+    const response = await fetch('http://localhost:8080/signup',{ 
       method:'POST',
       body:JSON.stringify(user),
       headers:{
