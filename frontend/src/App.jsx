@@ -9,6 +9,7 @@ import Title from './Components/Title'
 import NavBar from './Components/Navbar'
 import About from './Components/About'
 import Planner from './Components/Planner'
+import Login from './Components/Login'
 
 function App() {
  
@@ -21,6 +22,7 @@ function App() {
     <Route path="/signup" element={<SignUp />}/>
     <Route path="/about" element={<About />} />
     <Route path="/planner" element={<Planner />}/>
+    <Route path="/login" element={<Login />}/>
    </Routes>
 
     </>

@@ -43,7 +43,7 @@ li a:hover:not(.active){
     background-color: #e5bccc;
 }
 
-.SignUpform{
+.SignUpform ,.loginform{
     width: 500px;
     margin: 30px auto;
     background-color: #d0b3b7;
@@ -98,9 +98,7 @@ button{
     height: 30vh;
 }
 
-.signupnavBar{
-  margin-left: 1090px;
-}
+
 
 #PlannerInput{
     margin-top: 4%;

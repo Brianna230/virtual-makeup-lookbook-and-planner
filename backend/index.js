@@ -63,6 +63,11 @@ app.post('/signup', async(req,res)=>{
    
 })
 
+app.get("/login",async(req,res)=>{
+    res.send("This is a login")
+
+})
+
 
 app.listen(port, ()=> console.log('Listening on port:' + port))
 
