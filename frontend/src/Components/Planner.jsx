@@ -39,10 +39,21 @@ function Planner(){
         })
         const newSubmits = await response.json()
         console.log(newSubmits)
-        setPlannerData((prev =>[... prev, {plannersubmits}]))
+        setPlannerData((prev =>[... prev, newSubmits]))
         // setPlannersubmit([...plannersubmits, newSubmits])
         setPlannersubmit('')
     }
+
+  
+    useEffect(()=>{
+        async function fetchPlannerData(){
+        const res = await fetch ('http://localhost:8080/planner') 
+        const data = await res.json();
+        setPlannerData(data)
+            
+        }
+        fetchPlannerData();
+    },[])
 
   
 
@@ -54,7 +65,7 @@ function Planner(){
                     <div className="col" style={{border:"1px solid black",padding:"10%", marginRight:"5%",marginTop:"50px",paddingBottom:"20%", backgroundColor:"white"}}
                      >
                    {plannerData.map((item, index)=>(
-                    <p key={index}>{item.plannersubmits}</p>
+                    <p key={index}>{item.plannerSubmit}</p>
                    ))}
                 </div>
             </div>
