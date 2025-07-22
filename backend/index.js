@@ -25,7 +25,8 @@ app.get('/planner',async(req,res)=>{
 
 app.post('/planner', async(req,res)=>{
     try{
-        const submitLooks = await PlannerSubmit.create(req.body)
+        console.log(req.body.plannerSubmit)
+        const submitLooks = await PlannerSubmit.create(req.body.plannerSubmit)
         res.status(200).json(submitLooks)
     }catch(e){
         console.log(e)

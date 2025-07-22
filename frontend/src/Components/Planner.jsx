@@ -4,25 +4,11 @@ import PlannerSubmit from "../../../backend/models/Planner"
 import { useLocation } from "react-router-dom"
 
 function Planner(){
-    // const[data, setData] = useState([])
-    // useEffect(()=>{
-    //     const fetchData = async()=>{
-    //         const response = await fetch('',{
-    //             method:'GET',
-    //             headers:{
-    //                 'x-rapidapi-key': '275f1468f4mshefc33408b964bd2p13d5b3jsnfbce4b3565be',
-	// 	            'x-rapidapi-host': 'sephora.p.rapidapi.com'
-    //             }
-    //         })
-    //         const jsonData = await response.json();
-    //         setData(jsonData)
-    //         console.log(jsonData)
-
-    //     };
-    //     fetchData()
-    // },[])
+    useEffect(()=>{
+        
+    })
     const location = useLocation()
-    const[plannersubmits, setPlannersubmit] = useState('')
+    const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
     const[plannerData, setPlannerData] = useState([])
     console.log('location', location)
@@ -30,8 +16,9 @@ function Planner(){
     async function handleplannerSubmit(e) {
         e.preventDefault()
         const submit ={
-            plannerSubmit:{...plannersubmits,userId:location.state.userId}
+            plannerSubmit:{plannerSubmit,userId:location.state}
         }
+        console.log(submit)
         const response = await fetch('http://localhost:8080/planner',{
             method:'POST',
             body: JSON.stringify(submit),
@@ -72,7 +59,7 @@ function Planner(){
                 </div>
             </div>
             </div>
-            <input type="text" name="plannerInput" id="PlannerInput" required value={plannersubmits} onChange={(e)=>setPlannersubmit(e.target.value)}placeholder="Plan your makeup look"/>
+            <input type="text" name="plannerInput" id="PlannerInput" required value={plannerSubmit} onChange={(e)=>setPlannersubmit(e.target.value)}placeholder="Plan your makeup look"/>
             <div className="button-container2">
             <button type="submit" id="PlannerButton"> Submit</button>
             </div>
