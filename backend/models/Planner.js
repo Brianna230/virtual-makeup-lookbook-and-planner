@@ -3,7 +3,12 @@ import mongoose from "mongoose";
 const plannerSchema = mongoose.Schema({
     plannerSubmit:{
         type: String,
-        require:true
+        require:true,
+    },
+    update:{
+        type: Boolean,
+        default: false
+
     },
     userId:{
         type:mongoose.Schema.Types.ObjectId

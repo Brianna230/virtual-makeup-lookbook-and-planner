@@ -48,6 +48,24 @@ app.delete('/planner/:id', async(req,res)=>{
     }
 })
 
+app.put('/planner/:id', async(req,res)=>{
+    try{
+        const responseUpdate = await PlannerSubmit.findById(req.params.id)
+        if(!responseUpdate){
+            return res.status(404).json({error:"Planner item not found"})
+        }
+    if(req.body.plannerSubmit){
+        responseUpdate.plannerSubmit = req.body.plannerSubmit
+    }
+        responseUpdate.update = !responseUpdate.update;
+        await responseUpdate.save()
+        res.json({message:"Planner item update", data: responseUpdate})
+    }catch(e){
+        console.log(e)
+        res.json(e)
+    }
+})
+
 
 
 
