@@ -10,6 +10,8 @@ function Planner(){
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
     const[plannerData, setPlannerData] = useState([])
+    const [editingId, setEditingId] = useState(null)
+    const[editText, setEditText] = useState('')
     console.log('location', location)
 
     async function handleplannerSubmit(e) {
@@ -43,6 +45,22 @@ function Planner(){
     console.log("Response status:", res.status);
     }
 
+    async function handleUpdate(id) {
+        const res = await fetch (`http://localhost:8080/planner/${id}`,{
+            method:'PUT',
+            headers:{
+                'Content-Type' : 'application/json'
+            }
+        })
+        if(res.ok){
+            const result = await res.json();
+            const updatedItem = result.data
+            setPlannerData(prevData => prevData.map(item => item._id === id ? updatedItem : item))
+        }
+        
+    }
+
+
  ;
 
   
@@ -72,11 +90,13 @@ function Planner(){
                      >
                    {plannerData.map((item)=>(
                     <div key={item._id}>
+                           
                     <p>{item.plannerSubmit}</p>
                     <button type="button" onClick={() => handleDelete(item._id)}>-</button>
+                    <button type="button" onClick={() => handleUpdate(item._id)}>+</button>
                     </div>
                
-                   ))}
+                       ))}
                 </div>
             </div>
             </div>
