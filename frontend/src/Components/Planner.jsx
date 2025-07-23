@@ -31,6 +31,8 @@ function Planner(){
         setPlannersubmit('')
     }
 
+ 
+
   
     useEffect(()=>{
         async function fetchPlannerData(){
@@ -45,7 +47,6 @@ function Planner(){
 
     
 
-
    
 
   
@@ -57,8 +58,12 @@ function Planner(){
                 <div className="row">
                     <div className="col" style={{border:"1px solid black",padding:"10%", marginRight:"5%",marginTop:"50px",paddingBottom:"20%", backgroundColor:"white"}}
                      >
-                   {plannerData.map((item, index)=>(
-                    <p key={index}>{item.plannerSubmit}</p>
+                   {plannerData.map((item)=>(
+                    <div key={item._id}>
+                    <p>{item.plannerSubmit}</p>
+                    <button>-</button>
+                    </div>
+               
                    ))}
                 </div>
             </div>
