@@ -4,9 +4,7 @@ import PlannerSubmit from "../../../backend/models/Planner"
 import { useLocation } from "react-router-dom"
 
 function Planner(){
-    useEffect(()=>{
-        
-    })
+ 
     const location = useLocation()
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
@@ -36,13 +34,19 @@ function Planner(){
   
     useEffect(()=>{
         async function fetchPlannerData(){
-        const res = await fetch ('http://localhost:8080/planner') 
+        if(!location.state) return
+        const res = await fetch (`http://localhost:8080/planner/${location.state}`) 
         const data = await res.json();
         setPlannerData(data)
-            
+        console.log(data)
         }
         fetchPlannerData();
     },[])
+
+    
+
+
+   
 
   
 

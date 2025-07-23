@@ -13,9 +13,10 @@ const port = process.env.PORT
 app.use(express.json())
 app.use(cors())
 
-app.get('/planner',async(req,res)=>{
+app.get('/planner/:id',async(req,res)=>{
     try{
-        const plannerSubmit = await PlannerSubmit.find({})
+        console.log(req.params)
+        const plannerSubmit = await PlannerSubmit.find({userId:req.params.id})
         res.status(200).json(plannerSubmit)
     }catch(e){
         console.log(e)
@@ -34,14 +35,15 @@ app.post('/planner', async(req,res)=>{
     }
 })
 
-app.delete('/planners/:id', async(req,res)=>{
+app.delete('/planner/:id', async(req,res)=>{
     try{
-         const response = await PlannerSubmit.findbyId(req.params.id)
+         const response = await PlannerSubmit.findByIdAndDelete(req.params.id)
          console.log(response)
-         res.status(200).json(response)
+         if(!response) {return res.status(404).json({message:'Item not found'})}
+         res.status(200).json({message:'Deleted successfully'})
     }catch(e){
         console.log(e)
-        res.status(400).json(e)
+        res.status(500).json(e)
 
     }
 })
