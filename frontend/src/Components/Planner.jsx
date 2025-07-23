@@ -2,6 +2,7 @@
 import React,{useState,useEffect,useRef} from "react"
 import PlannerSubmit from "../../../backend/models/Planner"
 import { useLocation } from "react-router-dom"
+import { set } from "mongoose"
 
 function Planner(){
  
@@ -31,7 +32,18 @@ function Planner(){
         setPlannersubmit('')
     }
 
- 
+    async function handleDelete(id) {
+        const res =  await fetch(`http://localhost:8080/planner/${id}`,{
+            method:'DELETE',
+        })
+        if(res.ok){
+            setPlannerData(plannerData.filter(item => item._id !== id))
+        }
+            console.log('Deleting ID:', id);
+    console.log("Response status:", res.status);
+    }
+
+ ;
 
   
     useEffect(()=>{
@@ -61,7 +73,7 @@ function Planner(){
                    {plannerData.map((item)=>(
                     <div key={item._id}>
                     <p>{item.plannerSubmit}</p>
-                    <button>-</button>
+                    <button type="button" onClick={() => handleDelete(item._id)}>-</button>
                     </div>
                
                    ))}
