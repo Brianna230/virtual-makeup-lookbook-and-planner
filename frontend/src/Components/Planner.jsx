@@ -9,6 +9,8 @@ function Planner(){
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
     const[plannerData, setPlannerData] = useState([])
+    const[editingId, setEditingId] = useState(null)
+    const[editText,setEditingText] = useState("")
     console.log('location', location)
 
     async function handleplannerSubmit(e) {
@@ -47,13 +49,15 @@ function Planner(){
             method:'PUT',
             headers:{
                 'Content-Type' : 'application/json'
-            }
+            },body: JSON.stringify({plannerSubmit:editText})
         })
         if(res.ok){
             const result = await res.json();
             const updatedItem = result.data
             setPlannerData(prevData => prevData.map(item => item._id === id ? updatedItem : item))
         }
+        setEditingId(null)
+        setEditingText('')
         
     }
 
@@ -87,10 +91,19 @@ function Planner(){
                      >
                    {plannerData.map((item)=>(
                     <div key={item._id}>
-                           
+                        {editingId === item._id ?(
+                            <>
+                            <input type="text" value={editText} onChange={(e)=>setEditingText(e.target.value)} />
+                            <button type ="button" onClick={()=>handleUpdate(item._id)}>Save</button>
+                            <button type="button" onClick={()=>{setEditingId(null); setEditingText('')}}>Cancel</button>
+                            </>
+
+                       ) : (
+                        <>
                     <p>{item.plannerSubmit}</p>
                     <button type="button" onClick={() => handleDelete(item._id)}>-</button>
-                    <button type="button" onClick={() => handleUpdate(item._id)}>+</button>
+                    <button type="button" onClick={() => {setEditingId(item._id);setEditingText(item.plannerSubmit)}}>+</button>
+                    </>)}
                     </div>
                
                        ))}
