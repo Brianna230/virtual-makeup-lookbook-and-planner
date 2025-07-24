@@ -107,8 +107,12 @@ button{
     margin-left: 20px;
 }
 
-/* .button-container2{
+.button-container2{
     display: flex;
-    text-align: right;
-} */
+    justify-content: flex-end;
+}
 
+#PlannerButton{
+    margin-top:-50px;
+    margin-right: 20px;
+};
