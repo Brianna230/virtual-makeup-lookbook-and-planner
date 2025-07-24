@@ -16,7 +16,7 @@ function SignUp() {
       email:email.trim(),
       password:password.trim(),
     }; 
-                    // add try/catch
+  try{         // add try/catch
     const response = await fetch('http://localhost:8080/signup',{ 
       method:'POST',
       body:JSON.stringify(user),
@@ -30,6 +30,10 @@ function SignUp() {
     setUsername('')
     setEmail('')
     setPassword('')
+  }catch(error){
+    console.error('Sign up error',error.message)
+
+  }
   }
 
   return (

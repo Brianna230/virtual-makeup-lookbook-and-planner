@@ -5,4 +5,5 @@ BeautiMap is a web application in which I use the mern stack. It is primary plan
 
 
 ## MERN Stack
+I use react for the frontend, express and node for the server, and mongodb for the database.
 
