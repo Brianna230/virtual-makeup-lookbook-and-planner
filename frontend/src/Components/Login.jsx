@@ -11,6 +11,7 @@ function Login(){
     
     async function handleSubmit(e) {
     e.preventDefault()
+    
     const user ={
       username:username.trim(),
       password:password.trim(),
@@ -27,7 +28,6 @@ function Login(){
     setUserId(data.id)
     navigate('/planner', {state:data.id})
   }
-
     
 
     return(

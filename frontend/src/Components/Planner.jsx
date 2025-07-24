@@ -94,8 +94,8 @@ function Planner(){
                         {editingId === item._id ?(
                             <>
                             <input type="text" value={editText} onChange={(e)=>setEditingText(e.target.value)} />
-                            <button type ="button" onClick={()=>handleUpdate(item._id)}>Save</button>
-                            <button type="button" onClick={()=>{setEditingId(null); setEditingText('')}}>Cancel</button>
+                            <button type ="button" id="savebutton"onClick={()=>handleUpdate(item._id)}>Save</button>
+                            <button type="button" id="savebutton"onClick={()=>{setEditingId(null); setEditingText('')}}>Cancel</button>
                             </>
 
                        ) : (
