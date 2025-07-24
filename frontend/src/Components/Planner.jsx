@@ -1,6 +1,5 @@
 
 import React,{useState,useEffect,useRef} from "react"
-import PlannerSubmit from "../../../backend/models/Planner"
 import { useLocation } from "react-router-dom"
 
 function Planner(){
