@@ -3,11 +3,13 @@ import { useNavigate,Link } from 'react-router-dom';
 
 
 function SignUp() {
+
+   const Base_url = import.meta.env.VITE_BASE_URL
+
    const[users, setUsers]=useState([]);
    const[username,setUsername]=useState('');
    const[email, setEmail]=useState('')
    const[password,setPassword]=useState('')
-  
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -17,7 +19,7 @@ function SignUp() {
       password:password.trim(),
     }; 
   try{         // add try/catch
-    const response = await fetch('http://localhost:8080/signup',{ 
+    const response = await fetch(`http://localhost:8080/signup`,{ 
       method:'POST',
       body:JSON.stringify(user),
       headers:{

@@ -4,7 +4,7 @@ import PlannerSubmit from "../../../backend/models/Planner"
 import { useLocation } from "react-router-dom"
 
 function Planner(){
- 
+    const Base_url = import.meta.env.VITE_BASE_URL
     const location = useLocation()
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
