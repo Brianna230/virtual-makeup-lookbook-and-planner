@@ -15,7 +15,8 @@ function SignUp() {
       username:username.trim(),
       email:email.trim(),
       password:password.trim(),
-    };                 // add try/catch
+    }; 
+                    // add try/catch
     const response = await fetch('http://localhost:8080/signup',{ 
       method:'POST',
       body:JSON.stringify(user),

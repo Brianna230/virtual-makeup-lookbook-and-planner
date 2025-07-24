@@ -15,7 +15,8 @@ function Login(){
     const user ={
       username:username.trim(),
       password:password.trim(),
-    };                 // add try/catch
+    };  
+    try{              // add try/catch
     const response = await fetch('http://localhost:8080/login',{ 
       method:'POST',
       body:JSON.stringify(user),
@@ -27,7 +28,10 @@ function Login(){
     console.log(data)
     setUserId(data.id)
     navigate('/planner', {state:data.id})
-  }
+  }catch(error){
+    console.error('Login error:', error.message)
+  } 
+}
     
 
     return(
