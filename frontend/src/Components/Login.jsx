@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import {useUser} from './UserContext.jsx'
 
 function Login(){
     const [username, setUsername] = useState('')
     const [password,setPassword] = useState('')
     const navigate = useNavigate()
+    const {setUserId} = useUser()
     
     async function handleSubmit(e) {
     e.preventDefault()
@@ -22,6 +24,7 @@ function Login(){
     })
     const data = await response.json()
     console.log(data)
+    setUserId(data.id)
     navigate('/planner', {state:data.id})
   }
 
