@@ -9,8 +9,6 @@ function Planner(){
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
     const[plannerData, setPlannerData] = useState([])
-    const [editingId, setEditingId] = useState(null)
-    const[editText, setEditText] = useState('')
     console.log('location', location)
 
     async function handleplannerSubmit(e) {

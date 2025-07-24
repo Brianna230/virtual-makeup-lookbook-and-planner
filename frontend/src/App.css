@@ -1,8 +1,8 @@
-body{
+body {
     background:linear-gradient( to left , #DCC6E0, #F7E7CE);
     font-family: 'Poppins',sans-serif;
 }
-.title{
+.title {
     text-align: center;
     color: #4a2e39;
     padding: 30px;
