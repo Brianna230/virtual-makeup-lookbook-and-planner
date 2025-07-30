@@ -9,9 +9,14 @@ import PlannerSubmit from './models/Planner.js'
 
 const app = express() 
 
-const port = process.env.PORT
+const port = process.env.PORT || 8080;
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:'http://localhost:5173',
+    methods:['GET','POST','PUT','DELETE','OPTIONS'],
+    allowedHeaders: ['Content-Type','Authorization','Origin']
+}))
+
 
 app.get('/planner/:id',async(req,res)=>{
     try{

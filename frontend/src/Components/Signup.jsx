@@ -1,10 +1,10 @@
 import { useState,useEffect,useRef } from 'react'
 import { useNavigate,Link } from 'react-router-dom';
+import {API} from "./Planner.jsx"
 
 
 function SignUp() {
 
-   const Base_url = import.meta.env.VITE_BASE_URL
 
    const[users, setUsers]=useState([]);
    const[username,setUsername]=useState('');
@@ -19,7 +19,7 @@ function SignUp() {
       password:password.trim(),
     }; 
   try{         // add try/catch
-    const response = await fetch(`http://localhost:8080/signup`,{ 
+    const response = await fetch(`${API}/signup`,{ 
       method:'POST',
       body:JSON.stringify(user),
       headers:{

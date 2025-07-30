@@ -2,8 +2,9 @@
 import React,{useState,useEffect,useRef} from "react"
 import { useLocation } from "react-router-dom"
 
+ export const API = import.meta.env.VITE_BASE_API || 'http://localhost:8080';
+
 function Planner(){
-    const Base_url = import.meta.env.VITE_BASE_URL
     const location = useLocation()
     const[plannerSubmit, setPlannersubmit] = useState('')
     // const[Plannerinput, setPlannerinput] = useState('')
@@ -18,7 +19,7 @@ function Planner(){
             plannerSubmit:{plannerSubmit,userId:location.state}
         }
         console.log(submit)
-        const response = await fetch('http://localhost:8080/planner',{
+        const response = await fetch(`${API}/planner`,{
             method:'POST',
             body: JSON.stringify(submit),
             headers:{
@@ -33,7 +34,7 @@ function Planner(){
     }
 
     async function handleDelete(id) {
-        const res =  await fetch(`http://localhost:8080/planner/${id}`,{
+        const res =  await fetch(`${API}/planner/${id}`,{
             method:'DELETE',
         })
         if(res.ok){
@@ -44,7 +45,7 @@ function Planner(){
     }
 
     async function handleUpdate(id) {
-        const res = await fetch (`http://localhost:8080/planner/${id}`,{
+        const res = await fetch (`${API}/planner/${id}`,{
             method:'PUT',
             headers:{
                 'Content-Type' : 'application/json'
@@ -67,7 +68,7 @@ function Planner(){
     useEffect(()=>{
         async function fetchPlannerData(){
         if(!location.state) return
-        const res = await fetch (`http://localhost:8080/planner/${location.state}`) 
+        const res = await fetch (`${API}/planner/${location.state}`) 
         const data = await res.json();
         setPlannerData(data)
         console.log(data)

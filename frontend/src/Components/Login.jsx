@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {useUser} from './UserContext.jsx'
+import{API} from "./Planner.jsx"
 
 function Login(){
     const [username, setUsername] = useState('')
@@ -17,7 +18,7 @@ function Login(){
       password:password.trim(),
     };  
     try{              // add try/catch
-    const response = await fetch('http://localhost:8080/login',{ 
+    const response = await fetch(`${API}/login`,{ 
       method:'POST',
       body:JSON.stringify(user),
       headers:{
