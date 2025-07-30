@@ -12,7 +12,7 @@ const app = express()
 const port = process.env.PORT || 8080;
 app.use(express.json())
 app.use(cors({
-    origin:'http://localhost:5173',
+    origin:['http://localhost:5173','https://virtual-makeup-lookbook-and.onrender.com'],
     methods:['GET','POST','PUT','DELETE','OPTIONS'],
     allowedHeaders: ['Content-Type','Authorization','Origin']
 }))
