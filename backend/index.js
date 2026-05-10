@@ -31,6 +31,9 @@ app.get('/planner/:id',async(req,res)=>{
 
 app.post('/planner', async(req,res)=>{
     try{
+        if(!req.body.userId){
+            throw new Error
+        }
         console.log(req.body.plannerSubmit)
         const submitLooks = await PlannerSubmit.create(req.body.plannerSubmit)
         res.status(200).json(submitLooks)

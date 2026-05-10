@@ -15,11 +15,13 @@ function Planner(){
 
     async function handleplannerSubmit(e) {
         e.preventDefault()
+        try{
         const submit ={
             plannerSubmit:{plannerSubmit,userId:location.state}
         }
         console.log(submit)
-        const response = await fetch(`${API}/planner`,{
+        if(location.state){
+             const response = await fetch(`${API}/planner`,{
             method:'POST',
             body: JSON.stringify(submit),
             headers:{
@@ -29,8 +31,16 @@ function Planner(){
         const newSubmits = await response.json()
         console.log(newSubmits)
         setPlannerData((prev =>[... prev, newSubmits]))
-        // setPlannersubmit([...plannersubmits, newSubmits])
+        }else{
+            setPlannerData((prev =>[... prev, submit]))
+        }
+    }catch(e){
+        console.error(e)
+
+    }finally{
         setPlannersubmit('')
+    }
+      
     }
 
     async function handleDelete(id) {
